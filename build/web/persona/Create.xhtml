@@ -46,9 +46,9 @@
                    
                     <p:fileUpload fileUploadListener="#{personaController.handleFileUpload}"
                                   process="@form" update="@form" uploadLabel="Subir" cancelLabel="Cancelar"
-                                  value="#{pFuncionController.file}" label="Elegir"
-                                  allowTypes="/(\.|\/)(gif|jp?g|png)$/">
-                        <p:growl id="messages" showDetail="true" life="5000"/>
+                                  value="#{pFuncionController.file}" label="Elegir" multiple="false"
+                                  allowTypes="/(\.|\/)(gif|jp?g|png)$/" showButtons="false">
+                        <!--p:growl id="messages" showDetail="true" life="2000"/-->
                     </p:fileUpload>
                     
                     

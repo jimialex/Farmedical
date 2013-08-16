@@ -47,18 +47,18 @@
 
                     <h:outputLabel value="#{bundle.CreatePEmpleadoLabel_documentoUrl}" for="documentoUrl" />
                    
-                    <p:fileUpload fileUploadListener="#{pEmpleadoController.handleFileUpload}"
+                    <p:fileUpload fileUploadListener="#{pEmpleadoController.handleFileUpload}" 
+                                  mode="advanced" dragDropSupport="false"  
                                   process="@form" update="@form" uploadLabel="Subir" cancelLabel="Cancelar"
-                                  value="#{pFuncionController.file}" label="Elegir"
-                                  allowTypes="/(\.|\/)(pdf)$/"
-                                  >
-                        <p:growl id="messages" showDetail="true" life="5000"/>
-
-                        <p:graphicImage url="#{pEmpleadoController.url()}" width="100"/>
+                                  value="#{pFuncionController.file}" label="Elegir" 
+                                  allowTypes="/(\.|\/)(pdf)$/" showButtons="false" multiple="false" >
+                        
+                        <!--p:growl id="messagess" showDetail="true" life="2000"/-->
                     </p:fileUpload>
 
 
                 </p:panelGrid>
+                        <p:messages id="messages" showDetail="true" autoUpdate="true" closable="false"/>  
                 <br />
                 <h:commandLink action="#{pEmpleadoController.create}" value="#{bundle.CreatePEmpleadoSaveLink}" />
                 <br />

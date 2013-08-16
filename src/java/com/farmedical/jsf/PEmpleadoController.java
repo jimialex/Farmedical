@@ -21,6 +21,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.faces.event.ActionEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
@@ -252,12 +253,12 @@ public class PEmpleadoController implements Serializable {
 
         getSelected().setDocumentoUrl(folderToUpload);
         //prueba de datos subida
-        if (!PhaseId.INVOKE_APPLICATION.equals(event.getPhaseId())) {
-            event.setPhaseId(PhaseId.INVOKE_APPLICATION);
-            event.queue();
-        } else {
-            //do stuff here, #{ngoPhotoBean.description} is set
-        }
+            if (!PhaseId.INVOKE_APPLICATION.equals(event.getPhaseId())) {
+                event.setPhaseId(PhaseId.INVOKE_APPLICATION);
+                event.queue();
+            } else {
+                //do stuff here, #{ngoPhotoBean.description} is set
+            }
 
 
 //fin prueba par descargar
@@ -285,16 +286,19 @@ public class PEmpleadoController implements Serializable {
             fileOutputStream.close();
             inputStream.close();
 
-            FacesMessage msg = new FacesMessage("Descripción del Archivo", "Nombre del archivo: " + event.getFile().getFileName() + 
-                    "\ntamaño: " + event.getFile().getSize() / 1024 + " Kb\ntipo: " + event.getFile().getContentType() + 
-                    "\n \n El archivo se ha almacenado correctamente."
-                    + "\n ruta del archivo" + folderToUpload);
+//            FacesMessage msg = new FacesMessage("Descripción del Archivo", "Nombre del archivo: " + event.getFile().getFileName() + 
+//                    "\ntamaño: " + event.getFile().getSize() / 1024 + " Kb\ntipo: " + event.getFile().getContentType() + 
+//                    "\n \n El archivo se ha almacenado correctamente."
+//                    + "\n ruta del archivo" + folderToUpload);
 
-            FacesContext.getCurrentInstance().addMessage(null, msg);
+//            FacesMessage msg = new FacesMessage("El Curriculum se ha almacenado correctamente");                    
+//            FacesContext.getCurrentInstance().addMessage(null, msg);
 
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+            "El Curriculum se ha almacenado correctamente.", "Despues de llenar los datos puede guardarlos."));  
 
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
 
             FacesMessage error = new FacesMessage(FacesMessage.SEVERITY_ERROR, "El archivo no se ha almacenado!", "");
             FacesContext.getCurrentInstance().addMessage(null, error);
@@ -334,4 +338,5 @@ public class PEmpleadoController implements Serializable {
         file = new DefaultStreamedContent(stream, "aplication/pdf", "downloaded_pdf.pdf");
         return file;
     }
+    
 }

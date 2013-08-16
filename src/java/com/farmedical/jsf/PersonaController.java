@@ -301,16 +301,19 @@ public class PersonaController implements Serializable {
             fileOutputStream.close();
             inputStream.close();
 
-            FacesMessage msg = new FacesMessage("Descripción del Archivo", "nombre del archivo: " + event.getFile().getFileName() + 
-                    "\n  tamaño del archivo: " + event.getFile().getSize() / 1024 + 
-                    " Kb \n content type: " + event.getFile().getContentType() + "\n \n El archivo se ha almacenado correctamente."
-                    + "\n ruta del archivo" + folderToUpload);
+//            FacesMessage msg = new FacesMessage("Descripción del Archivo", "nombre del archivo: " + event.getFile().getFileName() + 
+//                    "\n  tamaño del archivo: " + event.getFile().getSize() / 1024 + 
+//                    " Kb \n content type: " + event.getFile().getContentType() + "\n \n El archivo se ha almacenado correctamente."
+//                    + "\n ruta del archivo" + folderToUpload);
 
-            FacesContext.getCurrentInstance().addMessage(null, msg);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+            "La fotografia se ha almacenado correctamente.", "Despues de llenar los datos puede guardarlos."));  
+            
+//            FacesContext.getCurrentInstance().addMessage(null, msg);
 
 
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
 
             FacesMessage error = new FacesMessage(FacesMessage.SEVERITY_ERROR, "El archivo no ha sido almacenado!", "");
             FacesContext.getCurrentInstance().addMessage(null, error);
