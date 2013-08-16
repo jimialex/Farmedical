@@ -90,12 +90,7 @@
                             <h:commandLink action="#{personaController.destroy}" value="#{bundle.ListPersonaDestroyLink}"/>
                         </h:column>
                     </h:dataTable>
-                    <br />
-                    <h:commandLink>  
-                        <p:graphicImage value="/imagenes/pdf.png" />  
-                        <p:dataExporter type="pdf" target="tbl" fileName="item" preProcessor="#{personaController.preProcessPDF}"/>  
-                    </h:commandLink>
-                    <br />
+                    
                     <br />
                 </h:panelGroup>
 

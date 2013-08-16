@@ -28,9 +28,9 @@
                     <h:outputLabel value="#{bundle.CreateEDireccionLabel_zona}" for="zona" />
                     <h:inputText id="zona" value="#{eDireccionController.selected.zona}" title="#{bundle.CreateEDireccionTitle_zona}" />
                     <h:outputLabel value="id Regional" for="idEmpleado" />
+                    
                    <h:selectOneMenu id="idRegional" value="#{eDireccionController.selected.idRegional}" title="Id Regional :" >
-                       
-                        <f:selectItems value="#{eRegionalController.itemsAvailableSelectOne}"/>
+                         <f:selectItems value="#{eRegionalController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
