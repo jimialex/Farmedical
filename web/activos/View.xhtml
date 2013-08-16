@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+       
+        <ui:define name="content">
+             <h:outputText value="#{bundle.ViewActivosTitle}"></h:outputText>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewActivosLabel_idActivo}"/>
+                    <h:outputText value="#{activosController.selected.idActivo}" title="#{bundle.ViewActivosTitle_idActivo}"/>
+                    <h:outputText value="#{bundle.ViewActivosLabel_activo}"/>
+                    <h:outputText value="#{activosController.selected.activo}" title="#{bundle.ViewActivosTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewActivosLabel_descripcion}"/>
+                    <h:outputText value="#{activosController.selected.descripcion}" title="#{bundle.ViewActivosTitle_descripcion}"/>
+                    <h:outputText value="#{bundle.ViewActivosLabel_idEmpleado}"/>
+                    <h:outputText value="#{activosController.selected.idEmpleado}" title="#{bundle.ViewActivosTitle_idEmpleado}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{activosController.destroyAndView}" value="#{bundle.ViewActivosDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewActivosEditLink}"/>
+                <br />
+                <h:commandLink action="#{activosController.prepareCreate}" value="#{bundle.ViewActivosCreateLink}" />
+                <br />
+                <h:commandLink action="#{activosController.prepareList}" value="#{bundle.ViewActivosShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewActivosIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

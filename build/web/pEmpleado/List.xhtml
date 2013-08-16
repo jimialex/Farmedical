@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+       
+        <ui:define name="content">
+         <h:outputText value="#{bundle.ListPEmpleadoTitle}"></h:outputText>
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPEmpleadoEmpty}" rendered="#{pEmpleadoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{pEmpleadoController.items.rowCount > 0}">
+                    <h:outputText value="#{pEmpleadoController.pagination.pageFirstItem + 1}..#{pEmpleadoController.pagination.pageLastItem + 1}/#{pEmpleadoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{pEmpleadoController.previous}" value="#{bundle.Previous} #{pEmpleadoController.pagination.pageSize}" rendered="#{pEmpleadoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{pEmpleadoController.next}" value="#{bundle.Next} #{pEmpleadoController.pagination.pageSize}" rendered="#{pEmpleadoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{pEmpleadoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPEmpleadoTitle_idEmpleado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEmpleado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPEmpleadoTitle_academico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.academico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPEmpleadoTitle_fechaAlta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaAlta}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPEmpleadoTitle_fechaBaja}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaBaja}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPEmpleadoTitle_correo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.correo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPEmpleadoTitle_cargo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cargo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPEmpleadoTitle_documentoUrl}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.documentoUrl}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPEmpleadoTitle_nivel}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nivel}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPEmpleadoTitle_idPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPEmpleadoTitle_idCargo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCargo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{pEmpleadoController.prepareView}" value="#{bundle.ListPEmpleadoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pEmpleadoController.prepareEdit}" value="#{bundle.ListPEmpleadoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pEmpleadoController.destroy}" value="#{bundle.ListPEmpleadoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{pEmpleadoController.prepareCreate}" value="#{bundle.ListPEmpleadoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPEmpleadoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

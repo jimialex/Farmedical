@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPlantillaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPlantillaLabel_idPlantilla}"/>
+                    <h:outputText value="#{plantillaController.selected.idPlantilla}" title="#{bundle.ViewPlantillaTitle_idPlantilla}"/>
+                    <h:outputText value="#{bundle.ViewPlantillaLabel_idEmpleado}"/>
+                    <h:outputText value="#{plantillaController.selected.idEmpleado}" title="#{bundle.ViewPlantillaTitle_idEmpleado}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{plantillaController.destroyAndView}" value="#{bundle.ViewPlantillaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPlantillaEditLink}"/>
+                <br />
+                <h:commandLink action="#{plantillaController.prepareCreate}" value="#{bundle.ViewPlantillaCreateLink}" />
+                <br />
+                <h:commandLink action="#{plantillaController.prepareList}" value="#{bundle.ViewPlantillaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPlantillaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

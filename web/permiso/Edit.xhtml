@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="#{bundle.EditPermisoLabel_idPermiso}" for="idPermiso" />
+                    <p:inputText id="idPermiso" value="#{permisoController.selected.idPermiso}" title="#{bundle.EditPermisoTitle_idPermiso}" required="true" requiredMessage="#{bundle.EditPermisoRequiredMessage_idPermiso}"/>
+                    <p:outputLabel value="#{bundle.EditPermisoLabel_feInicio}" for="feInicio" />
+                    <p:inputText id="feInicio" value="#{permisoController.selected.feInicio}" title="#{bundle.EditPermisoTitle_feInicio}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:inputText>
+                    <p:outputLabel value="#{bundle.EditPermisoLabel_feFin}" for="feFin" />
+                    <p:inputText id="feFin" value="#{permisoController.selected.feFin}" title="#{bundle.EditPermisoTitle_feFin}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:inputText>
+                    <p:outputLabel value="#{bundle.EditPermisoLabel_tipoPermiso}" for="tipoPermiso" />
+                    <p:inputText id="tipoPermiso" value="#{permisoController.selected.tipoPermiso}" title="#{bundle.EditPermisoTitle_tipoPermiso}" />
+                    <p:outputLabel value="#{bundle.EditPermisoLabel_horaInicio}" for="horaInicio" />
+                    <p:inputText id="horaInicio" value="#{permisoController.selected.horaInicio}" title="#{bundle.EditPermisoTitle_horaInicio}" >
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </p:inputText>
+                    <p:outputLabel value="#{bundle.EditPermisoLabel_horaFin}" for="horaFin" />
+                    <p:inputText id="horaFin" value="#{permisoController.selected.horaFin}" title="#{bundle.EditPermisoTitle_horaFin}" >
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </p:inputText>
+                     <p:outputLabel value="#{bundle.EditPermisoLabel_idPersona}" for="idPersona" />
+                    <p:selectOneMenu id="idPersona" value="#{permisoController.selected.idPersona}" title="#{bundle.EditPermisoTitle_idEmpleado}" required="true" requiredMessage="#{bundle.EditPermisoRequiredMessage_idEmpleado}">
+                        <f:selectItems value="#{personaController.itemsAvailableSelectOne}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="#{bundle.EditPermisoLabel_idMotivo}" for="idMotivo" />
+                    <p:selectOneMenu id="idMotivo" value="#{permisoController.selected.idMotivo}" title="#{bundle.EditPermisoTitle_idMotivo}" required="true" requiredMessage="#{bundle.EditPermisoRequiredMessage_idMotivo}">
+                        <f:selectItems value="#{motivoPermisoController.itemsAvailableSelectOne}"/>
+                    </p:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{permisoController.update}" value="#{bundle.EditPermisoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPermisoViewLink}"/>
+                <br />
+                <h:commandLink action="#{permisoController.prepareList}" value="#{bundle.EditPermisoShowAllLink}" immediate="true"/>
+                <br />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="content">
+            <h:outputText value="#{bundle.CreatePersonaTitle}"></h:outputText>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <p:panelGrid columns="2">
+
+                    <h:outputLabel value="#{bundle.CreatePersonaLabel_ci}" for="ci" />
+                    <p:inputText id="ci" value="#{personaController.selected.ci}" title="#{bundle.CreatePersonaTitle_ci}" />
+                    <h:outputLabel value="#{bundle.CreatePersonaLabel_nombre}" for="nombre" />
+                    <p:inputText id="nombre" value="#{personaController.selected.nombre}" title="#{bundle.CreatePersonaTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.CreatePersonaLabel_paterno}" for="paterno" />
+                    <p:inputText id="paterno" value="#{personaController.selected.paterno}" title="#{bundle.CreatePersonaTitle_paterno}" />
+                    <h:outputLabel value="#{bundle.CreatePersonaLabel_materno}" for="materno" />
+                    <p:inputText id="materno" value="#{personaController.selected.materno}" title="#{bundle.CreatePersonaTitle_materno}" />
+                    <h:outputLabel value="#{bundle.CreatePersonaLabel_fechaNacimiento}" for="fechaNacimiento" />
+                    <p:calendar id="fechaNacimiento" value="#{personaController.selected.fechaNacimiento}" 
+                                title="#{bundle.CreatePersonaTitle_fechaNacimiento}" pattern="MM/dd/yyyy">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:calendar>
+
+                    <h:outputLabel value="#{bundle.CreatePersonaLabel_idUser}" for="idUser" />
+                    <h:selectOneMenu id="idUser" value="#{personaController.selected.idUser}" title="#{bundle.CreatePersonaTitle_idUser}" >
+                        <f:selectItems value="#{usersController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePersonaLabel_idRegional}" for="idRegional" />
+                    <h:selectOneMenu id="idRegional" value="#{personaController.selected.idRegional}" title="#{bundle.CreatePersonaTitle_idRegional}" >
+
+
+                        <f:selectItems value="#{eRegionalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="#{bundle.CreatePersonaLabel_foto}" for="foto" />
+                    
+                   
+                    <p:fileUpload fileUploadListener="#{personaController.handleFileUpload}"
+                                  process="@form" update="@form" uploadLabel="Subir" cancelLabel="Cancelar"
+                                  value="#{pFuncionController.file}" label="Elegir"
+                                  allowTypes="/(\.|\/)(gif|jp?g|png)$/">
+                        <p:growl id="messages" showDetail="true" life="5000"/>
+                    </p:fileUpload>
+                    
+                    
+                     <br />                         
+                     <p:graphicImage id="imagen" value="#{personaController.url()}" width="80" />  
+                            
+                </p:panelGrid>
+                
+               
+                            
+                <br />
+                <h:commandLink action="#{personaController.create}" value="#{bundle.CreatePersonaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{personaController.prepareList}" value="#{bundle.CreatePersonaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePersonaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

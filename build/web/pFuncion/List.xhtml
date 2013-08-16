@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+       
+        <ui:define name="content">
+             <h:outputText value="#{bundle.ListPFuncionTitle}"></h:outputText>
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPFuncionEmpty}" rendered="#{pFuncionController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{pFuncionController.items.rowCount > 0}">
+                    <h:outputText value="#{pFuncionController.pagination.pageFirstItem + 1}..#{pFuncionController.pagination.pageLastItem + 1}/#{pFuncionController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{pFuncionController.previous}" value="#{bundle.Previous} #{pFuncionController.pagination.pageSize}" rendered="#{pFuncionController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{pFuncionController.next}" value="#{bundle.Next} #{pFuncionController.pagination.pageSize}" rendered="#{pFuncionController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{pFuncionController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPFuncionTitle_idFuncion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idFuncion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPFuncionTitle_rutaFuncion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rutaFuncion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPFuncionTitle_tipoFuncion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoFuncion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPFuncionTitle_idEmpleado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEmpleado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{pFuncionController.prepareView}" value="#{bundle.ListPFuncionViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pFuncionController.prepareEdit}" value="#{bundle.ListPFuncionEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pFuncionController.destroy}" value="#{bundle.ListPFuncionDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{pFuncionController.prepareCreate}" value="#{bundle.ListPFuncionCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPFuncionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

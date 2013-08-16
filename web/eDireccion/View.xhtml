@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+    
+        <ui:define name="content">
+            <h:outputText value="#{bundle.ViewEDireccionTitle}"></h:outputText>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEDireccionLabel_idDireccion}"/>
+                    <h:outputText value="#{eDireccionController.selected.idDireccion}" title="#{bundle.ViewEDireccionTitle_idDireccion}"/>
+                    <h:outputText value="#{bundle.ViewEDireccionLabel_calle}"/>
+                    <h:outputText value="#{eDireccionController.selected.calle}" title="#{bundle.ViewEDireccionTitle_calle}"/>
+                    <h:outputText value="#{bundle.ViewEDireccionLabel_ciudad}"/>
+                    <h:outputText value="#{eDireccionController.selected.ciudad}" title="#{bundle.ViewEDireccionTitle_ciudad}"/>
+                    <h:outputText value="#{bundle.ViewEDireccionLabel_departamento}"/>
+                    <h:outputText value="#{eDireccionController.selected.departamento}" title="#{bundle.ViewEDireccionTitle_departamento}"/>
+                    <h:outputText value="#{bundle.ViewEDireccionLabel_nro}"/>
+                    <h:outputText value="#{eDireccionController.selected.nro}" title="#{bundle.ViewEDireccionTitle_nro}"/>
+                    <h:outputText value="#{bundle.ViewEDireccionLabel_pais}"/>
+                    <h:outputText value="#{eDireccionController.selected.pais}" title="#{bundle.ViewEDireccionTitle_pais}"/>
+                    <h:outputText value="#{bundle.ViewEDireccionLabel_zona}"/>
+                    <h:outputText value="#{eDireccionController.selected.zona}" title="#{bundle.ViewEDireccionTitle_zona}"/>
+                    <h:outputText value="id Regional :"/>
+                    <h:outputText value="#{eDireccionController.selected.idRegional}" title="ID regional"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{eDireccionController.destroyAndView}" value="#{bundle.ViewEDireccionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEDireccionEditLink}"/>
+                <br />
+                <h:commandLink action="#{eDireccionController.prepareCreate}" value="#{bundle.ViewEDireccionCreateLink}" />
+                <br />
+                <h:commandLink action="#{eDireccionController.prepareList}" value="#{bundle.ViewEDireccionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEDireccionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

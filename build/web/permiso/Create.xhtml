@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">                 
+                    
+                     <p:outputLabel value="#{bundle.CreatePermisoLabel_idPersona}" for="idPersona" />
+                    <p:selectOneMenu id="idPersona" value="#{permisoController.selected.idPersona}"  required="true" 
+                                     requiredMessage="#{bundle.CreatePermisoRequiredMessage_idPersona}">
+                        <f:selectItems value="#{personaController.itemsAvailableSelectOne}"/>
+                    </p:selectOneMenu>
+                     
+                     <p:outputLabel value="#{bundle.CreatePermisoLabel_tipoPermiso}" for="tipoPermiso" />
+                    <p:selectOneMenu id="tipoPermiso" value="#{permisoController.selected.tipoPermiso}" 
+                                     required="true" style="width: 200px" 
+                                     requiredMessage="#{bundle.CreateMotivoPermisoRequiredMessage_motivoPermiso}" >                        
+                        <f:selectItem itemLabel="Seleccione uno" itemDisabled="false" noSelectionOption="true" />  
+                        <f:selectItem itemLabel="Por Dia(s)" itemValue="Por Dia(s)" />  
+                        <f:selectItem itemLabel="Medio Dia Mañana" itemValue="Medio Dia Mañana"/>  
+                        <f:selectItem itemLabel="Medio Dia Tarde" itemValue="Medio Dia Tarde" /> 
+                        <f:selectItem itemLabel="Por Horas" itemValue="Por Horas" />  
+                    </p:selectOneMenu>
+                     
+                     <p:outputLabel value="#{bundle.CreatePermisoLabel_idMotivo}" for="idMotivo" />
+                    <p:selectOneMenu id="idMotivo" value="#{permisoController.selected.idMotivo}"  required="true" 
+                                     requiredMessage="#{bundle.CreatePermisoRequiredMessage_idMotivo}">
+                        
+                        <f:selectItems value="#{motivoPermisoController.itemsAvailableSelectOne}"/>
+                    </p:selectOneMenu>
+                     
+                    <p:outputLabel value="#{bundle.CreatePermisoLabel_feInicio}" for="feInicio" />
+                    <p:calendar id="feInicio" value="#{permisoController.selected.feInicio}"
+                                pattern="MM/dd/yyyy" title="#{bundle.CreatePermisoTitle_feInicio}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:calendar>
+                    
+                    <p:outputLabel value="#{bundle.CreatePermisoLabel_feFin}" for="feFin" />
+                    <p:calendar id="feFin" value="#{permisoController.selected.feFin}" 
+                                pattern="MM/dd/yyyy" title="#{bundle.CreatePermisoTitle_feFin}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:calendar>
+                    
+                    <p:outputLabel value="#{bundle.CreatePermisoLabel_horaInicio}" for="horaInicio" />
+                    <p:calendar id="horaInicio" pattern="HH:mm" timeOnly="true" disabled="true"
+                                value="#{permisoController.selected.horaInicio}" 
+                                title="#{bundle.CreatePermisoTitle_horaInicio}" >
+                        <f:convertDateTime pattern="HH:mm" />
+                    </p:calendar>
+                    
+                    <p:outputLabel value="#{bundle.CreatePermisoLabel_horaFin}" for="horaFin" />
+                    <p:calendar id="horaFin" pattern="HH:mm" timeOnly="true" value="#{permisoController.selected.horaFin}" title="#{bundle.CreatePermisoTitle_horaFin}" >
+                        <f:convertDateTime pattern="HH:mm" />
+                    </p:calendar>
+                                       
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{permisoController.create}" value="#{bundle.CreatePermisoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{permisoController.prepareList}" value="#{bundle.CreatePermisoShowAllLink}" immediate="true"/>
+                <br />
+                
+            </h:form>
+                    <h:link id="ir" outcome="/motivoPermiso/Create" value="Nuevo Motivo"/>
+        </ui:define>
+    </ui:composition>
+
+</html>
+ <!--p:outputLabel value="#{bundle.CreatePermisoLabel_estado}" for="estado" />
+                    <p:inputText id="estado" value="#{permisoController.selected.estado}" title="#{bundle.CreatePermisoTitle_estado}" /-->
+                   
+                
+                
+                    <!--p:inputText id="tipoPermiso" value="#{permisoController.selected.tipoPermiso}" 
+                                 title="#{bundle.CreateMotivoPermisoTitle_motivoPermiso}" required="true" 
+                                 requiredMessage="#{bundle.CreateMotivoPermisoRequiredMessage_tipoPermiso}"/-->

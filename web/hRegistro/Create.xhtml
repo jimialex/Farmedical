@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            <h:outputText value="#{bundle.CreateHRegistroTitle}"></h:outputText>
+
+            <h:panelGroup id="messagePanel" layout="block">
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateHRegistroLabel_fecha}" for="fecha" />
+                    <p:calendar id="fecha" value="#{hRegistroController.selected.fecha}" title="#{bundle.CreateHRegistroTitle_fecha}" pattern="dd/MM/yyyy" showButtonPanel="true">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </p:calendar>
+                    <h:outputLabel value="#{bundle.CreateHRegistroLabel_hora}" for="hora" />
+                    <p:calendar id="hora" value="#{hRegistroController.selected.hora}" title="#{bundle.CreateHRegistroTitle_hora}" pattern="HH:mm:ss" timeOnly="true" showButtonPanel="true">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </p:calendar>
+
+
+
+
+
+                    <h:outputLabel value="#{bundle.CreateHRegistroLabel_idEmpleado}" for="idEmpleado" />
+                    <p:selectOneMenu id="idEmpleado" value="#{hRegistroController.selected.idEmpleado}" style="width: 170px">
+                        <f:selectItems value="#{pEmpleadoController.itemsAvailableSelectOne}"/>
+                    </p:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateHRegistroLabel_idhorario}" for="idhorario" />
+                    <p:selectOneMenu id="idhorario" value="#{hRegistroController.selected.idhorario}" style="width: 170px" editable="true" >
+                        <f:selectItems value="#{horarioController.itemsAvailableSelectOne}"/>
+                    </p:selectOneMenu>
+                </h:panelGrid>
+
+
+               
+
+
+
+
+                <p:commandButton action="#{hRegistroController.create}" value="#{bundle.CreateHRegistroSaveLink}" />
+                <p:commandButton action="#{hRegistroController.prepareList}" value="#{bundle.CreateHRegistroShowAllLink}" immediate="true"/>
+                <p:commandButton action="/index" value="#{bundle.CreateHRegistroIndexLink}" immediate="true"/>
+
+ <h:panelGrid columns="3">
+                    <p:calendar id="entradaM" value="#{hRegistroController.selected.entradaM}" title="#{bundle.CreateHRegistroTitle_entradaM}" pattern="HH:mm:ss" timeOnly="true" disabled="true">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </p:calendar>
+
+                    <p:calendar id="salidaM" value="#{hRegistroController.selected.salidaM}" title="#{bundle.CreateHRegistroTitle_salidaM}" pattern="HH:mm:ss" timeOnly="true" disabled="true">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </p:calendar>
+
+                    <p:calendar id="ingresoT" value="#{hRegistroController.selected.ingresoT}" title="#{bundle.CreateHRegistroTitle_ingresoT}" pattern="HH:mm:ss" timeOnly="true" disabled="true">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </p:calendar>
+
+                    <p:calendar id="salidaT" value="#{hRegistroController.selected.salidaT}" title="#{bundle.CreateHRegistroTitle_salidaT}" pattern="HH:mm:ss" timeOnly="true" disabled="true">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </p:calendar>
+
+                    <p:calendar id="continuoE" value="#{hRegistroController.selected.continuoE}" title="#{bundle.CreateHRegistroTitle_continuoE}" pattern="HH:mm:ss" timeOnly="true" disabled="true">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </p:calendar>
+
+                    <p:calendar id="continuoS" value="#{hRegistroController.selected.continuoS}" title="#{bundle.CreateHRegistroTitle_continuoS}" pattern="HH:mm:ss" timeOnly="true" disabled="true">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </p:calendar>
+
+                    <p:calendar id="retraso" value="#{hRegistroController.selected.retraso}" title="#{bundle.CreateHRegistroTitle_retraso}" pattern="HH:mm:ss" timeOnly="true" disabled="true">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </p:calendar>
+
+
+                </h:panelGrid>
+
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

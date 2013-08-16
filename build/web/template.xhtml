@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Farmedical Control de Personal</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <style type="text/css">
+            body{font-family: Tahoma,Arial,Verdana; font-size: 13px}
+            .label{width: 70px; font-weight: bold;display: inline-block;margin-left: 6px;text-align: left}
+            .textfield{width: 120px; padding-left: 2px}
+            .errorMessage{color:darkred;font-weight: bold}
+            .loginButton{float:right;margin-right: 5px}
+            .loginBox{width: 220px; vertical-align: middle;font-weight: bold}
+        </style>
+    </h:head>
+
+    <h:body>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="80" header="Farmedical Control de Personal" 
+                          resizable="false" closable="false" collapsible="false">
+
+            </p:layoutUnit>
+
+            <!-- <p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">
+                <h:outputText value="South unit content." />
+            </p:layoutUnit> -->
+
+            <p:layoutUnit id="layout1" position="west" size="200" header="Menu" resizable="false" 
+                          closable="false" collapsible="false" >
+                    <ui:include src="/resources/Menup.xhtml"  />
+            </p:layoutUnit>
+
+            <!--p:layoutUnit position="east" size="200" header="Ayuda" resizable="true" closable="true" collapsible="true" effect="drop">
+                <p:layoutUnit position="help">
+
+                </p:layoutUnit>
+            </p:layoutUnit-->
+
+            <p:layoutUnit position="center">
+               
+                <ui:insert name="content">
+                    Desarrollado por el Equipo Java User Group 
+                    .<br/>
+                    Luis Vladimir Fernandez Ramos
+                    <br/>
+                    Alex Condori Condori
+
+                </ui:insert>
+
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="#{bundle.ViewPermisoLabel_idPermiso}"/>
+                    <p:outputLabel value="#{permisoController.selected.idPermiso}" title="#{bundle.ViewPermisoTitle_idPermiso}"/>
+                    <p:outputLabel value="#{bundle.ViewPermisoLabel_feInicio}"/>
+                    <p:outputLabel value="#{permisoController.selected.feInicio}" title="#{bundle.ViewPermisoTitle_feInicio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:outputLabel>
+                    <p:outputLabel value="#{bundle.ViewPermisoLabel_feFin}"/>
+                    <p:outputLabel value="#{permisoController.selected.feFin}" title="#{bundle.ViewPermisoTitle_feFin}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:outputLabel>
+                    <p:outputLabel value="#{bundle.ViewPermisoLabel_tipoPermiso}"/>
+                    <p:outputLabel value="#{permisoController.selected.tipoPermiso}" title="#{bundle.ViewPermisoTitle_tipoPermiso}"/>
+                    <p:outputLabel value="#{bundle.ViewPermisoLabel_horaInicio}"/>
+                    <p:outputLabel value="#{permisoController.selected.horaInicio}" title="#{bundle.ViewPermisoTitle_horaInicio}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </p:outputLabel>
+                    <p:outputLabel value="#{bundle.ViewPermisoLabel_horaFin}"/>
+                    <p:outputLabel value="#{permisoController.selected.horaFin}" title="#{bundle.ViewPermisoTitle_horaFin}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </p:outputLabel>
+                   
+                    <p:outputLabel value="#{bundle.ViewPermisoLabel_idPersona}"/>
+                    <p:outputLabel value="#{permisoController.selected.idPersona}" title="#{bundle.ViewPermisoTitle_idPersona}"/>
+                    <p:outputLabel value="#{bundle.ViewPermisoLabel_idMotivo}"/>
+                    <p:outputLabel value="#{permisoController.selected.idMotivo}" title="#{bundle.ViewPermisoTitle_idMotivo}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{permisoController.destroyAndView}" value="#{bundle.ViewPermisoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPermisoEditLink}"/>
+                <br />
+                <h:commandLink action="#{permisoController.prepareCreate}" value="#{bundle.ViewPermisoCreateLink}" />
+                <br />
+                <h:commandLink action="#{permisoController.prepareList}" value="#{bundle.ViewPermisoShowAllLink}"/>
+                <br />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
+
+
+ <!--p:outputLabel value="#{bundle.ViewPermisoLabel_estado}"/>
+                    <p:outputLabel value="#{permisoController.selected.estado}" title="#{bundle.ViewPermisoTitle_estado}"/-->
+                    

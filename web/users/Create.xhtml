@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+     
+        <ui:define name="content">
+             <h:outputText value="#{bundle.CreateUsersTitle}"></h:outputText>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                 
+                    <h:outputLabel value="#{bundle.CreateUsersLabel_tipoUser}" for="tipoUser" />
+                    <h:inputText id="tipoUser" value="#{usersController.selected.tipoUser}" title="#{bundle.CreateUsersTitle_tipoUser}" />
+                    <h:outputLabel value="#{bundle.CreateUsersLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{usersController.selected.estado}" title="#{bundle.CreateUsersTitle_estado}" />
+                    <h:outputLabel value="#{bundle.CreateUsersLabel_pasword}" for="pasword" />
+                    <h:inputText id="pasword" value="#{usersController.selected.pasword}" title="#{bundle.CreateUsersTitle_pasword}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{usersController.create}" value="#{bundle.CreateUsersSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{usersController.prepareList}" value="#{bundle.CreateUsersShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateUsersIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

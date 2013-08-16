@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPermisoEmpty}" rendered="#{permisoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{permisoController.items.rowCount > 0}">
+                    <h:outputText value="#{permisoController.pagination.pageFirstItem + 1}..#{permisoController.pagination.pageLastItem + 1}/#{permisoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{permisoController.previous}" value="#{bundle.Previous} #{permisoController.pagination.pageSize}" rendered="#{permisoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{permisoController.next}" value="#{bundle.Next} #{permisoController.pagination.pageSize}" rendered="#{permisoController.pagination.hasNextPage}"/>&nbsp;
+                    <p:dataTable id="tbl" value="#{permisoController.items}" var="item" style="border:solid 1px">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPermisoTitle_idPermiso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPermiso}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPermisoTitle_feInicio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.feInicio}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPermisoTitle_feFin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.feFin}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPermisoTitle_tipoPermiso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoPermiso}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPermisoTitle_horaInicio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.horaInicio}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPermisoTitle_horaFin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.horaFin}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPermisoTitle_idPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPersona}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPermisoTitle_idMotivo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMotivo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{permisoController.prepareView}" value="#{bundle.ListPermisoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{permisoController.prepareEdit}" value="#{bundle.ListPermisoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{permisoController.destroy}" value="#{bundle.ListPermisoDestroyLink}"/>
+                        </p:column>
+                    </p:dataTable>
+                    <br />
+                    <h:commandLink>  
+                        <p:graphicImage value="/imagenes/pdf.png" />  
+                        <p:dataExporter type="pdf" target="tbl" fileName="Reporte Permiso" preProcessor="#{motivoPermisoController.preProcessPDF}"/>  
+                    </h:commandLink>                     
+                    
+                <br />
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{permisoController.prepareCreate}" value="#{bundle.ListPermisoCreateLink}"/>
+                <br />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+    
+        <ui:define name="content">
+            <h:outputText value="#{bundle.EditEAreaTitle}"></h:outputText>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    
+                    <h:outputLabel value="#{bundle.EditEAreaLabel_dato}" for="dato" />
+                    <h:inputText id="dato" value="#{eAreaController.selected.dato}" title="#{bundle.EditEAreaTitle_dato}" />
+                    <h:outputLabel value="#{bundle.EditEAreaLabel_area}" for="area" />
+                    <h:inputText id="area" value="#{eAreaController.selected.area}" title="#{bundle.EditEAreaTitle_area}" />
+                    <h:outputLabel value="#{bundle.EditEAreaLabel_idRegional}" for="idRegional" />
+                    <h:selectOneMenu id="idRegional" value="#{eAreaController.selected.idRegional}" title="#{bundle.EditEAreaTitle_idRegional}" >
+                        <f:selectItems value="#{eRegionalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{eAreaController.update}" value="#{bundle.EditEAreaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEAreaViewLink}"/>
+                <br />
+                <h:commandLink action="#{eAreaController.prepareList}" value="#{bundle.EditEAreaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEAreaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+  
+        <ui:define name="content">
+             <h:outputText value="#{bundle.ListERegionalTitle}"></h:outputText>
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListERegionalEmpty}" rendered="#{eRegionalController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{eRegionalController.items.rowCount > 0}">
+                    <h:outputText value="#{eRegionalController.pagination.pageFirstItem + 1}...#{eRegionalController.pagination.pageLastItem + 1} / #{eRegionalController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{eRegionalController.previous}" value="#{bundle.Previous} #{eRegionalController.pagination.pageSize}" rendered="#{eRegionalController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{eRegionalController.next}" value="#{bundle.Next} #{eRegionalController.pagination.pageSize}" rendered="#{eRegionalController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{eRegionalController.items}" var="item" border="0" 
+                                 cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" 
+                                 rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListERegionalTitle_idRegional}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idRegional}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListERegionalTitle_regional}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.regional}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListERegionalTitle_idEmpresa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEmpresa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{eRegionalController.prepareView}" value="#{bundle.ListERegionalViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{eRegionalController.prepareEdit}" value="#{bundle.ListERegionalEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{eRegionalController.destroy}" value="#{bundle.ListERegionalDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{eRegionalController.prepareCreate}" value="#{bundle.ListERegionalCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListERegionalIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

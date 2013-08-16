@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+    
+        <ui:define name="content">
+             <h:outputText value="#{bundle.EditPersonaTitle}"></h:outputText>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_idPersona}" for="idPersona" />
+                    <h:inputText id="idPersona" value="#{personaController.selected.idPersona}" title="#{bundle.EditPersonaTitle_idPersona}" required="true" requiredMessage="#{bundle.EditPersonaRequiredMessage_idPersona}"/>
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_ci}" for="ci" />
+                    <h:inputText id="ci" value="#{personaController.selected.ci}" title="#{bundle.EditPersonaTitle_ci}" />
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{personaController.selected.nombre}" title="#{bundle.EditPersonaTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_paterno}" for="paterno" />
+                    <h:inputText id="paterno" value="#{personaController.selected.paterno}" title="#{bundle.EditPersonaTitle_paterno}" />
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_materno}" for="materno" />
+                    <h:inputText id="materno" value="#{personaController.selected.materno}" title="#{bundle.EditPersonaTitle_materno}" />
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_fechaNacimiento}" for="fechaNacimiento" />
+                    <h:inputText id="fechaNacimiento" value="#{personaController.selected.fechaNacimiento}" title="#{bundle.EditPersonaTitle_fechaNacimiento}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_foto}" for="foto" />
+                    <h:inputText id="foto" value="#{personaController.selected.foto}" title="#{bundle.EditPersonaTitle_foto}" />
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_idUser}" for="idUser" />
+                    <h:selectOneMenu id="idUser" value="#{personaController.selected.idUser}" title="#{bundle.EditPersonaTitle_idUser}" >
+                        <f:selectItems value="#{usersController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_idRegional}" for="idRegional" />
+                    <h:selectOneMenu id="idRegional" value="#{personaController.selected.idRegional}" title="#{bundle.EditPersonaTitle_idRegional}" >
+                        <f:selectItems value="#{eRegionalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{personaController.update}" value="#{bundle.EditPersonaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPersonaViewLink}"/>
+                <br />
+                <h:commandLink action="#{personaController.prepareList}" value="#{bundle.EditPersonaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPersonaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

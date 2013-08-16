@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="content">
+            <h:outputText value="Crear nuevo Empleado"></h:outputText>
+
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <p:panelGrid columns="2">
+
+                    <h:outputLabel value="#{bundle.CreatePEmpleadoLabel_academico}" for="academico" />
+                    <p:inputText id="academico" value="#{pEmpleadoController.selected.academico}" title="#{bundle.CreatePEmpleadoTitle_academico}" />
+                    <h:outputLabel value="#{bundle.CreatePEmpleadoLabel_fechaAlta}" for="fechaAlta" />
+                    <p:calendar id="fechaAlta" value="#{pEmpleadoController.selected.fechaAlta}" pattern="MM/dd/yyyy" title="#{bundle.CreatePEmpleadoTitle_fechaAlta}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:calendar>
+                    <h:outputLabel value="#{bundle.CreatePEmpleadoLabel_fechaBaja}" for="fechaBaja" />
+                    <p:calendar id="fechaBaja" value="#{pEmpleadoController.selected.fechaBaja}" pattern="MM/dd/yyyy" title="#{bundle.CreatePEmpleadoTitle_fechaBaja}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:calendar>
+                    <h:outputLabel value="#{bundle.CreatePEmpleadoLabel_correo}" for="correo" />
+                    <p:inputText id="correo" value="#{pEmpleadoController.selected.correo}" title="#{bundle.CreatePEmpleadoTitle_correo}" />
+                    <h:outputLabel value="#{bundle.CreatePEmpleadoLabel_cargo}" for="cargo" />
+                    <p:inputText id="cargo" value="#{pEmpleadoController.selected.cargo}" title="#{bundle.CreatePEmpleadoTitle_cargo}" />
+
+                    <h:outputLabel value="#{bundle.CreatePEmpleadoLabel_nivel}" for="nivel" />
+                    <p:inputText id="nivel" value="#{pEmpleadoController.selected.nivel}" title="#{bundle.CreatePEmpleadoTitle_nivel}" />
+                    <h:outputLabel value="#{bundle.CreatePEmpleadoLabel_idPersona}" for="idPersona" />
+                    <p:selectOneMenu id="idPersona" value="#{pEmpleadoController.selected.idPersona}"  >
+                        <f:selectItems value="#{personaController.itemsAvailableSelectOne}"/>
+                    </p:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePEmpleadoLabel_idCargo}" for="idCargo" />
+                    <p:selectOneMenu id="idCargo" value="#{pEmpleadoController.selected.idCargo}"  >
+                        <f:selectItems value="#{cargoController.itemsAvailableSelectOne}"/>
+
+                    </p:selectOneMenu>
+
+
+                    <h:outputLabel value="#{bundle.CreatePEmpleadoLabel_documentoUrl}" for="documentoUrl" />
+                   
+                    <p:fileUpload fileUploadListener="#{pEmpleadoController.handleFileUpload}"
+                                  process="@form" update="@form" uploadLabel="Subir" cancelLabel="Cancelar"
+                                  value="#{pFuncionController.file}" label="Elegir"
+                                  allowTypes="/(\.|\/)(pdf)$/"
+                                  >
+                        <p:growl id="messages" showDetail="true" life="5000"/>
+
+
+                    </p:fileUpload>
+
+
+                </p:panelGrid>
+                <br />
+                <h:commandLink action="#{pEmpleadoController.create}" value="#{bundle.CreatePEmpleadoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pEmpleadoController.prepareList}" value="#{bundle.CreatePEmpleadoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePEmpleadoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

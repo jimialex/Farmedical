@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+       
+        <ui:define name="content">
+             <h:outputText value="#{bundle.ListEDireccionTitle}"></h:outputText>
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEDireccionEmpty}" rendered="#{eDireccionController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{eDireccionController.items.rowCount > 0}">
+                    <h:outputText value="#{eDireccionController.pagination.pageFirstItem + 1}..#{eDireccionController.pagination.pageLastItem + 1}/#{eDireccionController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{eDireccionController.previous}" value="#{bundle.Previous} #{eDireccionController.pagination.pageSize}" rendered="#{eDireccionController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{eDireccionController.next}" value="#{bundle.Next} #{eDireccionController.pagination.pageSize}" rendered="#{eDireccionController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{eDireccionController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEDireccionTitle_idDireccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDireccion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEDireccionTitle_calle}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.calle}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEDireccionTitle_ciudad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ciudad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEDireccionTitle_departamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.departamento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEDireccionTitle_nro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nro}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEDireccionTitle_pais}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pais}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEDireccionTitle_zona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.zona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="ID regional"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idRegional}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{eDireccionController.prepareView}" value="#{bundle.ListEDireccionViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{eDireccionController.prepareEdit}" value="#{bundle.ListEDireccionEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{eDireccionController.destroy}" value="#{bundle.ListEDireccionDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{eDireccionController.prepareCreate}" value="#{bundle.ListEDireccionCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListEDireccionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

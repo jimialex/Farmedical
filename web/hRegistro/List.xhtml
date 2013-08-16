@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+   <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            <h:outputText value="#{bundle.ListHRegistroTitle}"></h:outputText>
+      
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListHRegistroEmpty}" rendered="#{hRegistroController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{hRegistroController.items.rowCount > 0}">
+                    <h:outputText value="#{hRegistroController.pagination.pageFirstItem + 1}..#{hRegistroController.pagination.pageLastItem + 1}/#{hRegistroController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{hRegistroController.previous}" value="#{bundle.Previous} #{hRegistroController.pagination.pageSize}" rendered="#{hRegistroController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{hRegistroController.next}" value="#{bundle.Next} #{hRegistroController.pagination.pageSize}" rendered="#{hRegistroController.pagination.hasNextPage}"/>&nbsp;
+                    <p:dataTable value="#{hRegistroController.items}" var="item" style="border:solid 1px">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHRegistroTitle_idregistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idregistro}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHRegistroTitle_fecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHRegistroTitle_hora}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hora}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHRegistroTitle_entradaM}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.entradaM}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHRegistroTitle_salidaM}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.salidaM}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHRegistroTitle_ingresoT}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ingresoT}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHRegistroTitle_salidaT}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.salidaT}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHRegistroTitle_continuoE}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.continuoE}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHRegistroTitle_continuoS}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.continuoS}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHRegistroTitle_retraso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.retraso}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHRegistroTitle_idEmpleado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEmpleado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHRegistroTitle_idhorario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idhorario}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{hRegistroController.prepareView}" value="#{bundle.ListHRegistroViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{hRegistroController.prepareEdit}" value="#{bundle.ListHRegistroEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{hRegistroController.destroy}" value="#{bundle.ListHRegistroDestroyLink}"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:panelGroup>
+                <p:commandButton action="#{hRegistroController.prepareCreate}" value="#{bundle.ListHRegistroCreateLink}"/>
+                <p:commandButton action="/index" value="#{bundle.ListHRegistroIndexLink}" immediate="true"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

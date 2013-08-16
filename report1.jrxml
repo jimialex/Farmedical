@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3c25c74f-8f2a-44c9-a9b1-8484ff4524c7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="idregistro" class="java.lang.String"/>
+	<field name="idhorario" class="java.lang.String"/>
+	<field name="idEmpleado" class="java.lang.String"/>
+	<field name="fecha" class="java.util.Date"/>
+	<field name="hora" class="java.util.Date"/>
+	<field name="entradaM" class="java.util.Date"/>
+	<field name="salidaM" class="java.util.Date"/>
+	<field name="ingresoT" class="java.util.Date"/>
+	<field name="salidaT" class="java.util.Date"/>
+	<field name="continuoE" class="java.util.Date"/>
+	<field name="continuoS" class="java.util.Date"/>
+	<field name="retraso" class="java.util.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="191e8ad0-1fce-4d5d-9d4d-c0e9e85b6ba4" x="295" y="27" width="158" height="36"/>
+				<textElement textAlignment="Justified">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte por Fechas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="f8b5fc56-7d56-464f-9a44-efc5992998e6" x="0" y="0" width="62" height="20"/>
+				<textElement/>
+				<text><![CDATA[idregistro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="520ad9cb-97d1-4104-ae16-ec4ed82fe5be" x="62" y="0" width="62" height="20"/>
+				<textElement/>
+				<text><![CDATA[idhorario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="27b71dd3-eca1-4e2f-a212-9dd0d6ee3fea" x="124" y="0" width="62" height="20"/>
+				<textElement/>
+				<text><![CDATA[idEmpleado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="da0015c2-9cf5-482d-bb0e-8122deb313c0" x="186" y="0" width="62" height="20"/>
+				<textElement/>
+				<text><![CDATA[fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b92c9ee3-6951-4d59-9587-9ff74ab8078c" x="248" y="0" width="62" height="20"/>
+				<textElement/>
+				<text><![CDATA[hora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fb174e68-2af5-45a2-babc-097e9c607790" x="310" y="0" width="62" height="20"/>
+				<textElement/>
+				<text><![CDATA[entradaM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="59b90f8e-a7ac-4f29-a1e0-69cf89f98176" x="372" y="0" width="62" height="20"/>
+				<textElement/>
+				<text><![CDATA[salidaM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="abed6a84-da6d-4f15-9bf5-fc4958a0d7ce" x="434" y="0" width="62" height="20"/>
+				<textElement/>
+				<text><![CDATA[ingresoT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="73953edf-f9fb-4a00-842e-8f8747984862" x="496" y="0" width="62" height="20"/>
+				<textElement/>
+				<text><![CDATA[salidaT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a932ebbb-2286-40ef-ae75-af694ad174ae" x="558" y="0" width="62" height="20"/>
+				<textElement/>
+				<text><![CDATA[continuoE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="53cf8b4d-cb51-4735-9527-8c6e6b638cf7" x="620" y="0" width="62" height="20"/>
+				<textElement/>
+				<text><![CDATA[continuoS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9db2269c-51f7-4a65-96c1-d2e928f495fd" x="682" y="0" width="62" height="20"/>
+				<textElement/>
+				<text><![CDATA[retraso]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="59" splitType="Stretch">
+			<textField>
+				<reportElement uuid="f2737309-8915-43ac-97c9-5618f51e63e1" x="0" y="0" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{idregistro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="505ba879-a0ed-4a65-80ff-b88ea3294a18" x="62" y="0" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{idhorario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bc4fc255-60c5-44a3-89ce-4da20164a7f6" x="124" y="0" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{idEmpleado}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="8a23cea7-10e8-4021-b19a-0c2ac2bb756d" x="186" y="0" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss">
+				<reportElement uuid="3b3a91e1-2fd6-4f88-b2ce-3b7a2339da54" x="248" y="0" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{hora}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss">
+				<reportElement uuid="bb51bc0a-9eb5-4e95-9158-066cb7e964dc" x="310" y="0" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{entradaM}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss">
+				<reportElement uuid="db02a97f-b9e9-402f-bb47-0caf6a0651a1" x="372" y="0" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{salidaM}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss">
+				<reportElement uuid="9cc9921a-b283-489a-9dd2-00ba039dd156" x="434" y="0" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ingresoT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss">
+				<reportElement uuid="ccca1356-72a2-4023-94e1-0f32c610077c" x="496" y="0" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{salidaT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss">
+				<reportElement uuid="254f43a8-a754-43a8-bb66-2bdadb6f83d9" x="558" y="0" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{continuoE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss">
+				<reportElement uuid="29a19816-d35e-4768-bb53-2d2994248428" x="620" y="0" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{continuoS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss">
+				<reportElement uuid="c22355cb-d717-4ea0-bb1a-e773d1bf2866" x="682" y="0" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{retraso}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        
+        <ui:define name="content">
+             <h:outputText value="#{bundle.ListActivosTitle}"></h:outputText>
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListActivosEmpty}" rendered="#{activosController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{activosController.items.rowCount > 0}">
+                    <h:outputText value="#{activosController.pagination.pageFirstItem + 1}..#{activosController.pagination.pageLastItem + 1}/#{activosController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{activosController.previous}" value="#{bundle.Previous} #{activosController.pagination.pageSize}" rendered="#{activosController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{activosController.next}" value="#{bundle.Next} #{activosController.pagination.pageSize}" rendered="#{activosController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{activosController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActivosTitle_idActivo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idActivo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActivosTitle_activo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActivosTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActivosTitle_idEmpleado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEmpleado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{activosController.prepareView}" value="#{bundle.ListActivosViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{activosController.prepareEdit}" value="#{bundle.ListActivosEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{activosController.destroy}" value="#{bundle.ListActivosDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{activosController.prepareCreate}" value="#{bundle.ListActivosCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListActivosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        
+         <h:outputText value="#{bundle.ViewPEmpleadoTitle}"></h:outputText>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup> 
+            <h:form>
+                <p:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPEmpleadoLabel_idEmpleado}"/>
+                    <h:outputText value="#{pEmpleadoController.selected.idEmpleado}" title="#{bundle.ViewPEmpleadoTitle_idEmpleado}"/>
+                    <h:outputText value="#{bundle.ViewPEmpleadoLabel_academico}"/>
+                    <h:outputText value="#{pEmpleadoController.selected.academico}" title="#{bundle.ViewPEmpleadoTitle_academico}"/>
+                    <h:outputText value="#{bundle.ViewPEmpleadoLabel_fechaAlta}"/>
+                    <h:outputText value="#{pEmpleadoController.selected.fechaAlta}" title="#{bundle.ViewPEmpleadoTitle_fechaAlta}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPEmpleadoLabel_fechaBaja}"/>
+                    <h:outputText value="#{pEmpleadoController.selected.fechaBaja}" title="#{bundle.ViewPEmpleadoTitle_fechaBaja}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPEmpleadoLabel_correo}"/>
+                    <h:outputText value="#{pEmpleadoController.selected.correo}" title="#{bundle.ViewPEmpleadoTitle_correo}"/>
+                    <h:outputText value="#{bundle.ViewPEmpleadoLabel_cargo}"/>
+                    <h:outputText value="#{pEmpleadoController.selected.cargo}" title="#{bundle.ViewPEmpleadoTitle_cargo}"/>
+                    <h:outputText value="#{bundle.ViewPEmpleadoLabel_documentoUrl}"/>
+                    <h:outputText value="#{pEmpleadoController.selected.documentoUrl}" title="#{bundle.ViewPEmpleadoTitle_documentoUrl}"/>
+                    <h:outputText value="#{bundle.ViewPEmpleadoLabel_nivel}"/>
+                    <h:outputText value="#{pEmpleadoController.selected.nivel}" title="#{bundle.ViewPEmpleadoTitle_nivel}"/>
+                    <h:outputText value="#{bundle.ViewPEmpleadoLabel_idPersona}"/>
+                    <h:outputText value="#{pEmpleadoController.selected.idPersona}" title="#{bundle.ViewPEmpleadoTitle_idPersona}"/>
+                    <h:outputText value="#{bundle.ViewPEmpleadoLabel_idCargo}"/>
+                    <h:outputText value="#{pEmpleadoController.selected.idCargo}" title="#{bundle.ViewPEmpleadoTitle_idCargo}"/>
+                 <h:outputText value="Descargar Documentos :"/>
+
+                    <p:commandButton id="downloadLink" value="Descargar" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop)"   
+                                     icon="ui-icon-arrowthichk-s">  
+                        <p:fileDownload value="#{pEmpleadoController.getFileArchivo()}" />  
+                        <p:growl id="messages" showDetail="true" life="5000"/>
+                    </p:commandButton>
+                
+                </p:panelGrid>
+                <br />
+                <h:commandLink action="#{pEmpleadoController.destroyAndView}" value="#{bundle.ViewPEmpleadoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPEmpleadoEditLink}"/>
+                <br />
+                <h:commandLink action="#{pEmpleadoController.prepareCreate}" value="#{bundle.ViewPEmpleadoCreateLink}" />
+                <br />
+                <h:commandLink action="#{pEmpleadoController.prepareList}" value="#{bundle.ViewPEmpleadoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPEmpleadoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

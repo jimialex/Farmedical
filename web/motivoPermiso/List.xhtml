@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMotivoPermisoEmpty}" rendered="#{motivoPermisoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{motivoPermisoController.items.rowCount > 0}">
+                    <h:outputText value="#{motivoPermisoController.pagination.pageFirstItem + 1}..#{motivoPermisoController.pagination.pageLastItem + 1}/#{motivoPermisoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{motivoPermisoController.previous}" value="#{bundle.Previous} #{motivoPermisoController.pagination.pageSize}" rendered="#{motivoPermisoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{motivoPermisoController.next}" value="#{bundle.Next} #{motivoPermisoController.pagination.pageSize}" rendered="#{motivoPermisoController.pagination.hasNextPage}"/>&nbsp;
+                    <p:dataTable id="tbl" value="#{motivoPermisoController.items}" 
+                                 var="item" style="border:solid 1px">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotivoPermisoTitle_idMotivo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMotivo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotivoPermisoTitle_motivoPermiso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.motivoPermiso}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{motivoPermisoController.prepareView}" value="#{bundle.ListMotivoPermisoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{motivoPermisoController.prepareEdit}" value="#{bundle.ListMotivoPermisoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{motivoPermisoController.destroy}" value="#{bundle.ListMotivoPermisoDestroyLink}"/>
+                        </p:column>
+                    </p:dataTable>
+                    <br />
+                    <h:commandLink>  
+                        <p:graphicImage value="/imagenes/pdf.png" />  
+                        <p:dataExporter type="pdf" target="tbl" fileName="item" preProcessor="#{motivoPermisoController.preProcessPDF}"/>  
+                    </h:commandLink>                     
+                    
+                <br />
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{motivoPermisoController.prepareCreate}" value="#{bundle.ListMotivoPermisoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListMotivoPermisoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

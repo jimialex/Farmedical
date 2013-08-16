@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+       
+        <ui:define name="content">
+            
+            <h:outputText value="#{bundle.CreateCargoTitle}"></h:outputText>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    
+                    <p:outputLabel value="#{bundle.CreateCargoLabel_cargo}" for="cargo" />
+                    <p:inputText id="cargo" value="#{cargoController.selected.cargo}" title="#{bundle.CreateCargoTitle_cargo}" />
+                    <p:outputLabel value="#{bundle.CreateCargoLabel_estado}" for="estado" />
+                    <p:inputText id="estado" value="#{cargoController.selected.estado}" title="#{bundle.CreateCargoTitle_estado}" />
+                    <p:outputLabel value="#{bundle.CreateCargoLabel_fechaAlta}" for="fechaAlta" />
+                    <p:calendar id="fechaAlta" value="#{cargoController.selected.fechaAlta}" 
+                                title="#{bundle.CreateCargoTitle_fechaAlta}" 
+                        pattern="MM/dd/yyyy">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:calendar>
+                    <p:outputLabel value="#{bundle.CreateCargoLabel_fechaBaja}" for="fechaBaja" />
+                    <p:calendar id="fechaBaja" value="#{cargoController.selected.fechaBaja}" 
+                                title="#{bundle.CreateCargoTitle_fechaBaja}" 
+                        pattern="MM/dd/yyyy">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:calendar>
+                    <p:outputLabel value="#{bundle.CreateCargoLabel_idArea}" for="idArea" />
+                    <p:selectOneMenu id="idArea" value="#{cargoController.selected.idArea}" 
+                                     title="#{bundle.CreateCargoTitle_idArea}" >
+                        <f:selectItems value="#{eAreaController.itemsAvailableSelectOne}"/>
+                    </p:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{cargoController.create}" value="#{bundle.CreateCargoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{cargoController.prepareList}" value="#{bundle.CreateCargoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCargoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

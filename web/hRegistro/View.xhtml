@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+   <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            <h:outputText value="#{bundle.ViewHRegistroTitle}"></h:outputText>
+       
+            <h:panelGroup id="messagePanel" layout="block">
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewHRegistroLabel_idregistro}"/>
+                    <h:outputText value="#{hRegistroController.selected.idregistro}" title="#{bundle.ViewHRegistroTitle_idregistro}"/>
+                    <h:outputText value="#{bundle.ViewHRegistroLabel_fecha}"/>
+                    <h:outputText value="#{hRegistroController.selected.fecha}" title="#{bundle.ViewHRegistroTitle_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewHRegistroLabel_hora}"/>
+                    <h:outputText value="#{hRegistroController.selected.hora}" title="#{bundle.ViewHRegistroTitle_hora}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewHRegistroLabel_entradaM}"/>
+                    <h:outputText value="#{hRegistroController.selected.entradaM}" title="#{bundle.ViewHRegistroTitle_entradaM}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewHRegistroLabel_salidaM}"/>
+                    <h:outputText value="#{hRegistroController.selected.salidaM}" title="#{bundle.ViewHRegistroTitle_salidaM}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewHRegistroLabel_ingresoT}"/>
+                    <h:outputText value="#{hRegistroController.selected.ingresoT}" title="#{bundle.ViewHRegistroTitle_ingresoT}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewHRegistroLabel_salidaT}"/>
+                    <h:outputText value="#{hRegistroController.selected.salidaT}" title="#{bundle.ViewHRegistroTitle_salidaT}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewHRegistroLabel_continuoE}"/>
+                    <h:outputText value="#{hRegistroController.selected.continuoE}" title="#{bundle.ViewHRegistroTitle_continuoE}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewHRegistroLabel_continuoS}"/>
+                    <h:outputText value="#{hRegistroController.selected.continuoS}" title="#{bundle.ViewHRegistroTitle_continuoS}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewHRegistroLabel_retraso}"/>
+                    <h:outputText value="#{hRegistroController.selected.retraso}" title="#{bundle.ViewHRegistroTitle_retraso}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewHRegistroLabel_idEmpleado}"/>
+                    <h:outputText value="#{hRegistroController.selected.idEmpleado}" title="#{bundle.ViewHRegistroTitle_idEmpleado}"/>
+                    <h:outputText value="#{bundle.ViewHRegistroLabel_idhorario}"/>
+                    <h:outputText value="#{hRegistroController.selected.idhorario}" title="#{bundle.ViewHRegistroTitle_idhorario}"/>
+                </h:panelGrid>
+                <p:commandButton action="#{hRegistroController.destroyAndView}" value="#{bundle.ViewHRegistroDestroyLink}"/>
+                <p:commandButton action="Edit" value="#{bundle.ViewHRegistroEditLink}" immediate="true"/>
+                <p:commandButton action="#{hRegistroController.prepareCreate}" value="#{bundle.ViewHRegistroCreateLink}" />
+                <p:commandButton action="#{hRegistroController.prepareList}" value="#{bundle.ViewHRegistroShowAllLink}"/>
+                <p:commandButton action="/index" value="#{bundle.ViewHRegistroIndexLink}" immediate="true"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

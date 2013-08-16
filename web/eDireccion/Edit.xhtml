@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        
+        <ui:define name="content">
+             <h:outputText value="#{bundle.EditEDireccionTitle}"></h:outputText>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    
+                    <h:outputLabel value="#{bundle.EditEDireccionLabel_calle}" for="calle" />
+                    <h:inputText id="calle" value="#{eDireccionController.selected.calle}" title="#{bundle.EditEDireccionTitle_calle}" />
+                    <h:outputLabel value="#{bundle.EditEDireccionLabel_ciudad}" for="ciudad" />
+                    <h:inputText id="ciudad" value="#{eDireccionController.selected.ciudad}" title="#{bundle.EditEDireccionTitle_ciudad}" />
+                    <h:outputLabel value="#{bundle.EditEDireccionLabel_departamento}" for="departamento" />
+                    <h:inputText id="departamento" value="#{eDireccionController.selected.departamento}" title="#{bundle.EditEDireccionTitle_departamento}" />
+                    <h:outputLabel value="#{bundle.EditEDireccionLabel_nro}" for="nro" />
+                    <h:inputText id="nro" value="#{eDireccionController.selected.nro}" title="#{bundle.EditEDireccionTitle_nro}" />
+                    <h:outputLabel value="#{bundle.EditEDireccionLabel_pais}" for="pais" />
+                    <h:inputText id="pais" value="#{eDireccionController.selected.pais}" title="#{bundle.EditEDireccionTitle_pais}" />
+                    <h:outputLabel value="#{bundle.EditEDireccionLabel_zona}" for="zona" />
+                    <h:inputText id="zona" value="#{eDireccionController.selected.zona}" title="#{bundle.EditEDireccionTitle_zona}" />
+                    <h:outputLabel value="id Regional: " for="idEmpleado" />
+                   <h:selectOneMenu id="idRegional" value="#{eDireccionController.selected.idRegional}" title="id Regional :" >
+                        <f:selectItems value="#{eRegionalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{eDireccionController.update}" value="#{bundle.EditEDireccionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEDireccionViewLink}"/>
+                <br />
+                <h:commandLink action="#{eDireccionController.prepareList}" value="#{bundle.EditEDireccionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEDireccionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

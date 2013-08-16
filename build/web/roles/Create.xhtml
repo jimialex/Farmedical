@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRolesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateRolesLabel_idRole}" for="idRole" />
+                    <h:inputText id="idRole" value="#{rolesController.selected.idRole}" title="#{bundle.CreateRolesTitle_idRole}" required="true" requiredMessage="#{bundle.CreateRolesRequiredMessage_idRole}"/>
+                    <h:outputLabel value="#{bundle.CreateRolesLabel_role}" for="role" />
+                    <h:inputText id="role" value="#{rolesController.selected.role}" title="#{bundle.CreateRolesTitle_role}" />
+                    <h:outputLabel value="#{bundle.CreateRolesLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{rolesController.selected.estado}" title="#{bundle.CreateRolesTitle_estado}" />
+                    <h:outputLabel value="#{bundle.CreateRolesLabel_nivel}" for="nivel" />
+                    <h:inputText id="nivel" value="#{rolesController.selected.nivel}" title="#{bundle.CreateRolesTitle_nivel}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{rolesController.create}" value="#{bundle.CreateRolesSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{rolesController.prepareList}" value="#{bundle.CreateRolesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateRolesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

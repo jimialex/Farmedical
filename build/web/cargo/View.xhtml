@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="content">
+              <h:outputText value="#{bundle.ViewCargoTitle}"></h:outputText>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCargoLabel_idCargo}"/>
+                    <h:outputText value="#{cargoController.selected.idCargo}" title="#{bundle.ViewCargoTitle_idCargo}"/>
+                    <h:outputText value="#{bundle.ViewCargoLabel_cargo}"/>
+                    <h:outputText value="#{cargoController.selected.cargo}" title="#{bundle.ViewCargoTitle_cargo}"/>
+                    <h:outputText value="#{bundle.ViewCargoLabel_estado}"/>
+                    <h:outputText value="#{cargoController.selected.estado}" title="#{bundle.ViewCargoTitle_estado}"/>
+                    <h:outputText value="#{bundle.ViewCargoLabel_fechaAlta}"/>
+                    <h:outputText value="#{cargoController.selected.fechaAlta}" title="#{bundle.ViewCargoTitle_fechaAlta}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCargoLabel_fechaBaja}"/>
+                    <h:outputText value="#{cargoController.selected.fechaBaja}" title="#{bundle.ViewCargoTitle_fechaBaja}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCargoLabel_idArea}"/>
+                    <h:outputText value="#{cargoController.selected.idArea}" title="#{bundle.ViewCargoTitle_idArea}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{cargoController.destroyAndView}" value="#{bundle.ViewCargoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCargoEditLink}"/>
+                <br />
+                <h:commandLink action="#{cargoController.prepareCreate}" value="#{bundle.ViewCargoCreateLink}" />
+                <br />
+                <h:commandLink action="#{cargoController.prepareList}" value="#{bundle.ViewCargoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCargoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

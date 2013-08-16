@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+      
+        <ui:define name="content">
+             <h:outputText value="#{bundle.CreateEAreaTitle}"></h:outputText>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+           
+                    <h:outputLabel value="#{bundle.CreateEAreaLabel_dato}" for="dato" />
+                    <h:inputText id="dato" value="#{eAreaController.selected.dato}" title="#{bundle.CreateEAreaTitle_dato}" />
+                    <h:outputLabel value="#{bundle.CreateEAreaLabel_area}" for="area" />
+                    <h:inputText id="area" value="#{eAreaController.selected.area}" title="#{bundle.CreateEAreaTitle_area}" />
+                    <h:outputLabel value="#{bundle.CreateEAreaLabel_idRegional}" for="idRegional" />
+                    <h:selectOneMenu id="idRegional" value="#{eAreaController.selected.idRegional}" title="#{bundle.CreateEAreaTitle_idRegional}" >
+                        <f:selectItems value="#{eRegionalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{eAreaController.create}" value="#{bundle.CreateEAreaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{eAreaController.prepareList}" value="#{bundle.CreateEAreaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateEAreaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

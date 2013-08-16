@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="content">
+             <h:outputText value="#{bundle.ListPTelefonoTitle}"></h:outputText>
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPTelefonoEmpty}" rendered="#{pTelefonoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{pTelefonoController.items.rowCount > 0}">
+                    <h:outputText value="#{pTelefonoController.pagination.pageFirstItem + 1}..#{pTelefonoController.pagination.pageLastItem + 1}/#{pTelefonoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{pTelefonoController.previous}" value="#{bundle.Previous} #{pTelefonoController.pagination.pageSize}" rendered="#{pTelefonoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{pTelefonoController.next}" value="#{bundle.Next} #{pTelefonoController.pagination.pageSize}" rendered="#{pTelefonoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{pTelefonoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPTelefonoTitle_idTelefono}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTelefono}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPTelefonoTitle_numero}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numero}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPTelefonoTitle_tipo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPTelefonoTitle_idPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{pTelefonoController.prepareView}" value="#{bundle.ListPTelefonoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pTelefonoController.prepareEdit}" value="#{bundle.ListPTelefonoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pTelefonoController.destroy}" value="#{bundle.ListPTelefonoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{pTelefonoController.prepareCreate}" value="#{bundle.ListPTelefonoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPTelefonoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

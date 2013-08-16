@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Farmedical</title>
+    </h:head>
+    <h:body>
+        <h:form>  
+
+            <p:growl id="messages" autoUpdate="true"/>  
+            <p:panelMenu rendered="true">
+                <p:submenu label="Datos Empresa">
+                    <p:menuitem value="Empresa" action="/empresa/List.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-home"/>
+                    <p:menuitem value="Regional" action="/eRegional/List.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-home"/>
+                    <p:menuitem value="Dirección" action="/eDireccion/List.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-home"/>
+                    <p:menuitem value="Area" action="/eArea/List.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-home"/>
+                    <p:menuitem value="Teléfono" action="/pTelefono/List.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-home"/>
+                    <p:menuitem value="Empleado Cargo" action="/cargo/List.xhtml?faces-redirect=true" icon="ui-icon-person"/>
+
+                </p:submenu>
+
+                <p:submenu label="Datos Persona ">
+                    <p:menuitem value="persona" action="/persona/List.xhtml?faces-redirect=true"  icon="ui-icon-person"/>
+                    <p:menuitem value="Empleado" action="/pEmpleado/List.xhtml?faces-redirect=true"  icon="ui-icon-person"/>
+                    <p:menuitem value="Empleado Función" action="/pFuncion/List.xhtml?faces-redirect=true"  icon="ui-icon-person"/>
+                    <p:menuitem value="Empleado Activos" action="/activos/List.xhtml?faces-redirect=true"  icon="ui-icon-person"/>
+
+                </p:submenu>
+
+                <p:submenu label="Solicitudes">
+                    <p:menuitem value="Tipo de Permiso" action="/motivoPermiso/List.xhtml?faces-redirect=true"  icon="ui-icon-clipboard"/>
+                    <p:menuitem value="Permiso" action="/permiso/List.xhtml?faces-redirect=true"  icon="ui-icon-clipboard"/>
+                    <p:menuitem value="Vacación" action="/vacacion/List.xhtml?faces-redirect=true"  icon="ui-icon-clipboard"/>
+
+                </p:submenu>
+
+            </p:panelMenu>
+        </h:form> 
+    </h:body>
+</html>
+

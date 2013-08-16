@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+       
+        <ui:define name="content">
+             <h:outputText value="#{bundle.EditCargoTitle}"></h:outputText>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    
+                    <h:outputLabel value="#{bundle.EditCargoLabel_cargo}" for="cargo" />
+                    <h:inputText id="cargo" value="#{cargoController.selected.cargo}" title="#{bundle.EditCargoTitle_cargo}" />
+                    <h:outputLabel value="#{bundle.EditCargoLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{cargoController.selected.estado}" title="#{bundle.EditCargoTitle_estado}" />
+                    <h:outputLabel value="#{bundle.EditCargoLabel_fechaAlta}" for="fechaAlta" />
+                    <h:inputText id="fechaAlta" value="#{cargoController.selected.fechaAlta}" title="#{bundle.EditCargoTitle_fechaAlta}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCargoLabel_fechaBaja}" for="fechaBaja" />
+                    <h:inputText id="fechaBaja" value="#{cargoController.selected.fechaBaja}" title="#{bundle.EditCargoTitle_fechaBaja}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCargoLabel_idArea}" for="idArea" />
+                    <h:selectOneMenu id="idArea" value="#{cargoController.selected.idArea}" title="#{bundle.EditCargoTitle_idArea}" >
+                        <f:selectItems value="#{eAreaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{cargoController.update}" value="#{bundle.EditCargoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCargoViewLink}"/>
+                <br />
+                <h:commandLink action="#{cargoController.prepareList}" value="#{bundle.EditCargoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCargoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

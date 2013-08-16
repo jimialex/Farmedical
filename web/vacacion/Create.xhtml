@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    
+                    <p:outputLabel value="#{bundle.CreateVacacionLabel_idPersona}" for="idPersona" />
+                    <p:selectOneMenu id="idPersona" value="#{vacacionController.selected.idPersona}" required="true" requiredMessage="#{bundle.CreateVacacionRequiredMessage_idPersona}">
+                        <f:selectItems value="#{personaController.itemsAvailableSelectOne}"/>
+                    </p:selectOneMenu>
+                    
+                    
+                    <p:outputLabel value="#{bundle.CreateVacacionLabel_feInicio}" for="feInicio" />
+                    <p:calendar id="feInicio" value="#{vacacionController.selected.feInicio}" 
+                                title="#{bundle.CreateVacacionTitle_feInicio}" pattern="MM/dd/yyyy">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:calendar>
+                   
+                    <p:outputLabel value="#{bundle.CreateVacacionLabel_feFin}" for="feFin" />
+                    <p:calendar id="feFin" value="#{vacacionController.selected.feFin}" 
+                                title="#{bundle.CreateVacacionTitle_feFin}" pattern="MM/dd/yyyy">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:calendar>
+                                                         
+                    
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{vacacionController.create}" value="#{bundle.CreateVacacionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{vacacionController.prepareList}" value="#{bundle.CreateVacacionShowAllLink}" immediate="true"/>
+                <br />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
+<!--p:outputLabel value="#{bundle.CreateVacacionLabel_estado}" for="estado" />
+                    <p:inputText id="estado" value="#{vacacionController.selected.estado}" title="#{bundle.CreateVacacionTitle_estado}" /-->
+                
+                
+                
